@@ -18,7 +18,7 @@ int factorial(int factor) {
 }
 
 // linked list
-typedef struct Nodes {
+typedef struct {
   void *next;
   int data;
 } Node;
@@ -26,17 +26,58 @@ typedef struct Nodes {
 Node *head = NULL;
 
 // add a node to the list
+Node *addNode(int data) {
+  Node *new = NULL;
+  // if list is empty
+  if (head == NULL) { // meaning head (front of list) is not pointing to any
+                      // list item (hence NULL)
+
+    new = malloc(sizeof(Node)); // allocate mem for new list item
+
+    new->data = data;
+    head = new;
+    new->next = NULL;
+  } else { // head is NOT empty (head != NULL)
+
+    new = malloc(sizeof(Node));
+
+    new->data = data;
+    new->next = head;
+    head = new;
+  }
+
+  return new;
+}
 
 // remove a node from the list
 
 // insert a node into a position on the list
+
+// print list
+
+void printList() {
+  Node *current = head;
+
+  while (current != NULL) {
+
+    printf("%d->", current->data);
+    current = current->next;
+  }
+
+  printf("\n");
+
+  return;
+}
 
 void printOptions() {
   printf("\tYou have the following options:\n");
   printf("\t1. Add a node to the list\n");
   printf("\t2. Remove a node from the list\n");
   printf("\t3. Insert a node into the list\n");
-  printf("\t4. Quit\n");
+  printf("\t4. Print the current list\n");
+  printf("\t5. Quit\n");
+
+  return;
 }
 
 int main() {
@@ -50,21 +91,37 @@ int main() {
   printf("GPU: %s\n", nzxt.gpu);
   printf("Storage: %dGB\n", nzxt.storage);
 
-  int *pointer; 
-  int newVariable = 20;
+  int option = -1;
+  while (option != 5) {
 
-  pointer = &newVariable;
-  printf("\n%p - this is just 'pointer'.\n", pointer);
-  printf("%p - this is the &address of newVariable.\n", &newVariable);
-  printf("%d - this is using *pointer to get the value.\n", *pointer);
+    printOptions();
 
+    int optionPicked = scanf("%d", &option);
 
-  // int option = -1;
-  // while (option != 4) {
-  //
-  //   printOptions();
-  //   scanf("%d", &option);
-  // }
+    if (optionPicked == 1 && option > 0 && option < 5) {
+      switch (option) {
+      case 1:
+        // add operation
+        printf("What number would you like to add? ");
+        scanf("%d", &option);
+        Node *new = addNode(option);
+        break;
+      case 2:
+        // remove operation
+        break;
+      case 3:
+        // insert operation
+        break;
+      case 4:
+        // print list
+        printList();
+        break;
+      case 5:
+        // quit
+        break;
+      }
+    }
+  }
 
   return 0;
 }
