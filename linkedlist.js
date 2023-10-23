@@ -18,15 +18,17 @@ function printOptions() {
 let option = 0;
 
 while (option != 5) {
-printOptions()
-option = prompt();
+	printOptions()
+	option = prompt();
 
-if(option > 0 && option < 5){
-	switch(option){
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		break;}}
+	if (option > 0 && option < 5) {
+		switch (option) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+				break;
+		}
+	}
 }
