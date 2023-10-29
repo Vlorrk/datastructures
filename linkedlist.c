@@ -85,10 +85,10 @@ void insertNode(int data, int position)
 
   ListNode *NewListNode = malloc(sizeof(ListNode));
 
-  NewListNode->listData = data;
   NewListNode->nextListItemPointer = CurrentNode->nextListItemPointer;
+  NewListNode->listData = CurrentNode->listData;
   CurrentNode->nextListItemPointer = NewListNode;
-
+  CurrentNode->listData = data;
   return;
 }
 
