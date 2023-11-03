@@ -108,20 +108,14 @@ class BinaryTree {
 
   findMinHeight(node = this.root) {
     if (node == null) {
-      console.log(`this ${node} just returned -1\n`);
       return -1;
     }
-    console.log(`${node.data} is above recursion calls\n`);
     let left = this.findMinHeight(node.left);
-    console.log(`this ${node.data} just went under left \n`);
     let right = this.findMinHeight(node.right);
-    console.log(`this ${node.data} just went under right \n`);
 
     if (left < right) {
-      console.log(`this ${node.data} just went to left < right. left is ${left} \n`);
       return left + 1;
     } else {
-      console.log(`this ${node.data} just went to right > left. right is ${right}  \n`);
       return right + 1;
     }
   }
